@@ -1,0 +1,42 @@
+<div fxLayout="column" class="byd-page-container">
+    <div style="border-bottom: 1px solid #e0e0e0;"><span>My Coin Offer</span></div>
+
+    <div fxFlex class="byd-coin-field-div" style="overflow-y: auto;">
+
+        <div id="divSpin" style="text-align: center;"><img src="assets/img/Spin-1s-200px.gif" class="byd-spin"></div>
+
+        <ng-container *ngFor="let coin of myCoinOffers">
+            <div fxLayout="row">
+                <div fxFlex></div>
+                <div fxFlex="50" fxLayout="row">
+                    <div fxFlex="40" fxLayout="column" (click)="openCoinDetail(coin)" style="text-align: center;">
+                        <div fxFlex><img [src]="coin.imageUrls[0]" class="byd-coin-image"></div>
+                    </div>
+                    <div fxLayout="column">
+                        <div><img [src]="coin.imageUrls[0]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[1]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[2]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[3]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[4]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[5]" class="byd-coin-preview-image"></div>
+                    </div>
+                    <div fxFlex fxLayout="column" style="margin-left: 20px">
+                        <div class="byd-div-heigh25"><span>Coin Name: </span><span><b>{{coin.name}}</b></span></div>
+                        <div fxLayout="row" class="byd-div-heigh25">
+                            <div fxFlex="50"><span>Start Price: </span><span><b>{{coin.startPrice}}</b></span></div>
+                            <div fxFlex><span>Bottom Price: </span><span><b>{{coin.lowestPrice}}</b></span></div>
+                        </div>
+                        <div fxLayout="row" class="byd-div-heigh25">
+                            <div fxFlex="50"><span>Current Price: </span><span><b>{{coin.currentPrice}}</b></span></div>
+                            <div fxFlex><span><b>Offer Price:</b> </span><span><b>{{coin.coinOffer.offerPrice}}</b></span></div>
+                        </div>
+                        <div fclass="byd-div-heigh25" fxLayout="row" style="padding-top: 20px;">
+                            <div fxFlex="75"><button class="byd-function-button" (click)="acceptOffer(coin.coinOffer.userId, coin.coinOffer.coinId, coin.name)">Accept Offer</button></div>
+                        </div>
+                    </div>
+                </div>
+                <div fxFlex></div>
+            </div>
+        </ng-container>
+    </div>
+</div>

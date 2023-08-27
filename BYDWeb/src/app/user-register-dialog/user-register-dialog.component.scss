@@ -1,0 +1,33 @@
+// ::ng-deep #mfEmail .mat-mdc-text-field-wrapper { padding: 0 5px !important; }
+// ::ng-deep #mfEmail .mat-mdc-form-field-error-wrapper { padding: 0 2px; }
+// ::ng-deep #mfEmail .mat-mdc-form-field-infix { height: 40px; min-height: 40px; padding-top: 15px !important; padding-bottom: 5px !important; }
+// ::ng-deep #mfEmail .mdc-floating-label { top:20px !important; margin-top: 3px; }
+
+// ::ng-deep #mfPwd .mat-mdc-text-field-wrapper { height:40px; padding: 0 5px !important; }
+// ::ng-deep #mfPwd .mat-mdc-form-field-error-wrapper { padding: 0 2px; }
+// ::ng-deep #mfPwd .mat-mdc-form-field-infix { padding-top: 10px !important; }
+// ::ng-deep #mfPwd .mdc-floating-label { top:20px !important; }
+
+::ng-deep .mat-mdc-text-field-wrapper { padding: 0 5px !important; }
+::ng-deep .mat-mdc-form-field-error-wrapper { padding: 0 2px !important; }
+::ng-deep .mat-mdc-form-field-infix { height: 40px; min-height: 40px; padding-top: 15px !important; padding-bottom: 5px !important; }
+::ng-deep .mdc-floating-label { top:20px !important; margin-top: 3px; }
+
+
+::ng-deep .mat-mdc-dialog-content { max-height: 70vh; }
+
+
+.byd-div-close {  height:40px; border-top: 1px solid #f0f0f0; min-height: 40px;padding: 5px; }
+.btnClose { float: right;width: 100px; height: 30px; border-radius: 5px; margin-right: 20px;}
+
+
+.byd-function-button {
+    width:200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px;
+    color:white;
+    background-color: #1a405d;
+}
+
+.disabled-btn { opacity: 0.5; cursor: not-allowed; }

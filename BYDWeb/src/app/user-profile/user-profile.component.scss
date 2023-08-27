@@ -1,0 +1,16 @@
+.byd-page-container {
+    height:100%;
+    padding: 20px;
+}
+
+
+.byd-function-button {
+    width:200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px;
+    color:white;
+    background-color: #1a405d;
+}
+
+.disabled-btn { opacity: 0.5; cursor: not-allowed; }

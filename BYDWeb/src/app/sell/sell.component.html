@@ -1,0 +1,41 @@
+<div fxLayout="row" class="byd-page-container">
+    <div fxFlex></div>
+    <div fxFlex="60" fxLayout="column">
+        <div style="border-bottom: 1px solid #e0e0e0;"><span>Sales Hub</span></div>
+
+        <div fxLayout="row">
+            <div fxFlex="33" class="byd-sale-summary-div" (click)="loadSellCoins(0)" fxLayout="column">
+                <div fxFlex style="line-height: 100px;"><span class="byd-sale-summary-total">{{totalCount}}</span></div>
+                <div style="height:20px"><span>Total Lots</span></div>
+            </div>
+            <div fxFlex="34" class="byd-sale-summary-div"  (click)="loadSellCoins(1)" fxLayout="column">
+                <div fxFlex style="line-height: 100px;"><span class="byd-sale-summary-total">{{soldCount}}</span></div>
+                <div style="height:20px"><span style="height:20px">Sold Lots</span></div>
+            </div>
+            <div fxFlex="33" class="byd-sale-summary-div"  (click)="loadSellCoins(2)" fxLayout="column">
+                <div fxFlex style="line-height: 100px;"><span class="byd-sale-summary-total">{{waitingCount}}</span></div>
+                <div style="height:20px"><span style="height:20px">Awaiting Shipment</span></div>
+            </div>
+        </div>
+
+
+        <div fxFlex class="byd-coin-field-div">
+
+            <kendo-grid [kendoGridBinding]="userCoins" [pageSize]="50" [pageable]="true" [sortable]="true" [height]="550">
+                <kendo-grid-column field="coinId" title="Id" [width]="50"></kendo-grid-column>
+                <kendo-grid-column field="name" title="Name" [width]="200"></kendo-grid-column>
+                <!-- <kendo-grid-column field="description" [width]="250"></kendo-grid-column> -->
+                <kendo-grid-column field="startPrice" title="Start" format="{0:c}" [width]="110"></kendo-grid-column>
+                <kendo-grid-column field="currentPrice" title="Current" format="{0:c}" [width]="100"></kendo-grid-column>
+                <kendo-grid-column field="lowestPrice" title="Lowest" format="{0:c}" [width]="110"></kendo-grid-column>
+                <kendo-grid-column field="interval" title="Interval" [width]="90"></kendo-grid-column>
+                <kendo-grid-column field="increment" title="Increment" [width]="100"></kendo-grid-column>
+                <kendo-grid-column field="enteredDate" title="Entered" format="{0:d}" [width]="120"></kendo-grid-column>
+                <kendo-grid-column field="ifShipped" title="Shipped"></kendo-grid-column>
+            </kendo-grid>
+
+        </div>
+
+    </div>
+    <div fxFlex></div>
+</div>

@@ -1,0 +1,31 @@
+<div fxLayout="column" class="byd-page-container">
+    <div style="border-bottom: 1px solid #e0e0e0;"><span>My Watch List</span></div>
+
+    <div fxFlex class="byd-coin-field-div">
+        
+        <div id="divSpin" style="text-align: center;"><img src="assets/img/Spin-1s-200px.gif" class="byd-spin"></div>
+
+        <ng-container *ngFor="let coin of coins">
+            <div fxLayout="row">
+                <div (click)="openCoinDetail(coin)" style="width:215px; text-align: center;">
+                    <img [src]="coin.imageUrls[0]" class="byd-coin-image">
+                </div>
+                <div fxLayout="column">
+                    <div><img [src]="coin.imageUrls[0]" class="byd-coin-preview-image"></div>
+                    <div><img [src]="coin.imageUrls[1]" class="byd-coin-preview-image"></div>
+                    <div><img [src]="coin.imageUrls[2]" class="byd-coin-preview-image"></div>
+                    <div><img [src]="coin.imageUrls[3]" class="byd-coin-preview-image"></div>
+                    <div><img [src]="coin.imageUrls[4]" class="byd-coin-preview-image"></div>
+                    <div><img [src]="coin.imageUrls[5]" class="byd-coin-preview-image"></div>
+                </div>
+                <div fxLayout="column" style="margin-left: 20px">
+                    <div><span>Coin Name: </span><span><b>{{coin.name}}</b></span></div>
+                    <div><span>Start Price: </span><span><b>{{coin.startPrice}}</b></span></div>
+                    <div><span>Interval: </span><span><b>{{coin.interval}}</b></span></div>
+                    <div><span>Increment: </span><span><b>{{coin.increment}}</b></span></div>
+                    <div><span>Bottom Price: </span><span><b>{{coin.lowestPrice}}</b></span></div>
+                </div>
+            </div>
+          </ng-container>
+    </div>
+</div>

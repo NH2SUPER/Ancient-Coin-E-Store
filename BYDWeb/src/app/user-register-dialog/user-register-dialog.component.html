@@ -1,0 +1,126 @@
+<div style="height:100%" fxLayout="column">
+    <div style="height:40px; border-bottom:1px solid #a0a0a0;text-align: center;">
+        <span style="line-height:40px; font-size:20px">New User Registration</span>
+        <span class="material-icons" (click)="closeDialog()"
+            style="float: right;line-height: 40px;margin-right: 10px;cursor: pointer;">close</span>
+    </div>
+    <div fxFlex mat-dialog-content fxLayout="column" style="max-height:100%; padding: 10px;">
+        <form fxFlex fxLayout="column" class="example-form" [formGroup]="formGroup">
+            <!-- email/password -->
+            <div style="border-bottom:1px solid #a0a0a0">
+                <div fxLayout="row">
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfEmail" class="example-full-width" style="width:100%">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+                            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                Email is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfPwd" class="example-full-width" style="width:100%">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput [formControl]="passwordControl" [errorStateMatcher]="matcher" />
+                            <mat-error *ngIf="passwordControl.hasError('firstLetterAlpha')">
+                                Password starts with a letter and only letters and numbers.
+                            </mat-error>
+                            <mat-error *ngIf="passwordControl.hasError('required')">
+                                Password is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <!-- name -->
+            <div style="border-bottom:1px solid #a0a0a0; padding-top: 10px;">
+                <div fxLayout="row">
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfFirstName" class="example-full-width" style="width:100%">
+                            <mat-label>First Name</mat-label>
+                            <input type="text" matInput [formControl]="firstNameFormControl" [errorStateMatcher]="matcher">
+                            <mat-error *ngIf="firstNameFormControl.hasError('required')">
+                                First Name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfLastName" class="example-full-width" style="width:100%">
+                            <mat-label>Last Name</mat-label>
+                            <input type="text" matInput [formControl]="lastNameFormControl" [errorStateMatcher]="matcher">
+                            <mat-error *ngIf="lastNameFormControl.hasError('required')">
+                                Last Name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfPhone" class="example-full-width" style="width:100%">
+                            <mat-label>Mobile/Phone (Optional)</mat-label>
+                            <input type="text" matInput [formControl]="phoneControl" [errorStateMatcher]="matcher">
+                            <mat-error *ngIf="emailFormControl.hasError('invalidPhone')">
+                                Please enter a valid mobile/phone number.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <!-- address -->
+            <div fxFlex style="padding-top: 10px;">
+                <div fxLayout="row">
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfAdress1" class="example-full-width" style="width:100%">
+                            <mat-label>Address</mat-label>
+                            <input type="text" [formControl]="address1Control"  matInput>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfAdress2" class="example-full-width" style="width:100%">
+                            <mat-label>Address 2 (Optional)</mat-label>
+                            <input type="text" [formControl]="address2Control" matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfCity" class="example-full-width" style="width:100%">
+                            <mat-label>City</mat-label>
+                            <input type="text" [formControl]="cityControl" matInput>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfProvince" class="example-full-width" style="width:100%">
+                            <mat-label>Province/State</mat-label>
+                            <input type="text" [formControl]="provinceControl" matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfPostalCode" class="example-full-width" style="width:100%">
+                            <mat-label>Postal Code</mat-label>
+                            <input type="text" [formControl]="postalCodeControl" matInput>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="50" style="padding-right: 10px;">
+                        <mat-form-field id="mfCountry" class="example-full-width" style="width:100%">
+                            <mat-label>Country</mat-label>
+                            <input type="text" [formControl]="countryControl"matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div mat-dialog-actions class="byd-div-close" fxLayout="row">
+        <div fxFlex></div>
+        <button mat-button (click)="closeDialog()" class="btnClose byd-function-button">Cancel</button>&nbsp;&nbsp;&nbsp;
+        <button mat-button (click)="addNewUser()" class="btnClose byd-function-button" [ngClass]="{'disabled-btn': !formGroup.valid}" [disabled]="!formGroup.valid">Submit</button>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div style="height:100%" fxLayout="column">
+  <div style="height:30px; line-height:30px; background-color: #1a405d; color: white; font-size:18px; padding: 5px;">
+    <span>Payment Form</span>
+    <span class="material-icons" (click)="closeDialog()" style="float: right;line-height: 30px; cursor: pointer;">close</span>
+  </div>
+
+  <form style="padding: 5px">
+    <div class="byd-coin-field-div">
+      <kendo-label class="k-form" text="Payment Amount" [for]="inputAmount"></kendo-label>
+      <div id="divPaymentAmount"><span #inputAmount>{{paymentAmount | currency }}</span></div>
+    </div>
+
+    <div class="byd-coin-field-div">
+      <kendo-label class="k-form" text="Card Number" [for]="cardNumberElement"></kendo-label>
+      <div id="card-number-element" #cardNumberElement></div>
+    </div>
+
+    <!-- <div class="byd-coin-field-div">
+      <label for="cardNumber">Card Number</label>
+      <div id="card-number-element" #cardNumberElement></div>
+    </div> -->
+
+    <div class="byd-coin-field-div">
+      <label for="cardExpiry">Expiration Date</label>
+      <div id="card-expiry-element" #cardExpiryElement></div>
+    </div>
+    <div class="byd-coin-field-div">
+      <label for="cardCvc">CVC</label>
+      <div id="card-cvc-element" #cardCvcElement></div>
+    </div>
+  </form>
+  
+  <div style="padding: 5px;">
+    <button *ngIf="!paymentSucceed" id="btnPayNow" type="button" (click)="makePayment()" class="byd-function-button">Pay Now</button>
+    <button *ngIf="paymentSucceed" id="btnSucceeded" type="button" class="byd-function-button" style="background-color:mediumseagreen;">Payment Succeeded</button>
+  </div>
+
+  <div fxFlex style="text-align: center">
+    <span id="spanMessage"></span>
+    <span id="spanError" style="color:red"></span>
+  </div>
+  <div style="text-align: center;font-size: 9px; color: #cdcdcd;">
+    <span>The user payment logic was built on <b>Stripe</b> company security technique. </span>
+  </div>
+</div>
+

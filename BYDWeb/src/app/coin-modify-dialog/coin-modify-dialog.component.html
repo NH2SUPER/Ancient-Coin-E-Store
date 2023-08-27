@@ -1,0 +1,177 @@
+<div fxLayout="column" class="byd-page-container">
+    <div class="byd-coin-field-div">
+        <kendo-label class="k-form" text="Coin Title" [for]="input"></kendo-label>
+        <kendo-textbox #input [(ngModel)]="currentCoin.name"></kendo-textbox>
+    </div>
+
+    <div class="byd-coin-field-div">
+        <kendo-label class="k-form" text="Description" [for]="input"></kendo-label>
+        <kendo-textbox #input [(ngModel)]="currentCoin.description"></kendo-textbox>
+    </div>
+
+    <!-- Category -->
+    <div class="byd-coin-field-div">
+        <kendo-label class="k-form" text="Category">
+            <div class="byd-div-radio">
+                <input type="radio" value=1 class="byd-radio" size="small" name="rdoCategory" [(ngModel)]="currentCoin.categoryId" kendoRadioButton />
+                <span class="byd-radio-text">Gold</span>
+                <input type="radio" value=2 class="byd-radio" size="small" name="rdoCategory" [(ngModel)]="currentCoin.categoryId" kendoRadioButton checked />
+                <span class="byd-radio-text">Silver</span>
+                <input type="radio" value=3 class="byd-radio" size="small" name="rdoCategory" [(ngModel)]="currentCoin.categoryId" kendoRadioButton />
+                <span class="byd-radio-text">Copper/Brass</span>
+                <input type="radio" value=4 class="byd-radio" size="small" name="rdoCategory" [(ngModel)]="currentCoin.categoryId" kendoRadioButton />
+                <span class="byd-radio-text">Medals</span>
+                <input type="radio" value=5 class="byd-radio" size="small" name="rdoCategory" [(ngModel)]="currentCoin.categoryId" kendoRadioButton />
+                <span class="byd-radio-text">Banknote</span>
+                <input type="radio" value="20" class="byd-radio" size="small" name="rdoCategory" [(ngModel)]="currentCoin.categoryId" kendoRadioButton />
+                <span class="byd-radio-text">Other</span>
+            </div>
+        </kendo-label>
+    </div>
+
+
+        <!-- start price & bottom Price & increment-->
+        <div class="byd-coin-field-div" fxLayout="row">
+            <div fxFlex="33">
+                <kendo-label class="k-form" text="Start Price">
+                    <kendo-numerictextbox [(value)]="currentCoin.startPrice" [autoCorrect]="true"></kendo-numerictextbox>
+                </kendo-label>
+            </div>
+            <div fxFlex="33" style="padding-left: 10px;">
+                <kendo-label class="k-form" text="Bottom Price">
+                    <kendo-numerictextbox [(value)]="currentCoin.lowestPrice" [autoCorrect]="true"></kendo-numerictextbox>
+                </kendo-label>
+            </div>
+            <div fxFlex="34" style="padding-left: 10px;">
+                <kendo-label class="k-form" text="Increment">
+                    <kendo-numerictextbox [(value)]="currentCoin.increment" [autoCorrect]="true"></kendo-numerictextbox>
+                </kendo-label>
+            </div>
+        </div>
+
+        <!-- start date & end date & interval-->
+        <div class="byd-coin-field-div" fxLayout="row">
+            <div fxFlex="33">
+                <kendo-label class="k-form" text="Start DateTime">
+                    <kendo-datetimepicker [format]="format" [(value)]="startDateTime"></kendo-datetimepicker>
+                </kendo-label>
+            </div>
+            <div fxFlex="33" style="padding-left: 10px;">
+                <kendo-label class="k-form" text="End DateTime">
+                    <kendo-datetimepicker [format]="format" [(value)]="endDateTime"></kendo-datetimepicker>
+                </kendo-label>
+            </div>
+            <div fxFlex="34" style="padding-left: 10px;">
+                <kendo-label class="k-form" text="Interval">
+                    <kendo-dropdownlist [data]="intervals" [(value)]="interval" [textField]="'text'" [valueField]="'value'"></kendo-dropdownlist>
+                </kendo-label>
+            </div>
+        </div>
+
+        <div class="byd-coin-field-div">
+            <kendo-label class="k-form" text="Shipping Options">
+                <div class="byd-new-coin-div" fxLayout="column">
+                    <div fxLayout="row" style="text-align: center;">
+                        <div fxFlex="15" fxLayout="column" style="border-right: 1px solid rgba(0, 0, 0, 0.08);">
+                            <div fxFlex></div><span>Domestic</span><div fxFlex></div>
+                        </div>
+                        <div fxFlex="30" style="padding: 5px;">
+                            <kendo-label class="k-form" text="Carrier">
+                                <kendo-dropdownlist [data]="carriers" [(value)]="currentCoin.carrierNameDomestic"></kendo-dropdownlist>
+                            </kendo-label>
+                        </div>
+                        <div fxFlex="30" style="padding: 5px;">
+                            <kendo-label class="k-form" text="Service Type" [for]="serviceType"></kendo-label>
+                            <kendo-textbox #serviceType [(ngModel)]="currentCoin.serviceTypeDomestic"></kendo-textbox>
+                        </div>
+                        <div fxFlex="25" style="padding: 5px;">
+                            <kendo-label class="k-form" text="Shipping Fee">
+                                <kendo-numerictextbox [(value)]="currentCoin.shippingFeeDomestic" [autoCorrect]="true"></kendo-numerictextbox>
+                            </kendo-label>
+                        </div>
+                    </div>
+                    <div style="border-top: 1px solid rgba(0, 0, 0, 0.08); text-align: center;">
+                        <div fxFlex="15" fxLayout="column" style="border-right: 1px solid rgba(0, 0, 0, 0.08);">
+                            <div fxFlex></div><span>International</span><div fxFlex></div>
+                        </div>
+                        <div fxFlex="30" style="padding: 5px;">
+                            <kendo-label class="k-form" text="Carrier">
+                                <kendo-dropdownlist [data]="carriers" [(value)]="currentCoin.carrierNameInternational"></kendo-dropdownlist>
+                            </kendo-label>
+                        </div>
+                        <div fxFlex="30" style="padding: 5px;">
+                            <kendo-label class="k-form" text="Service Type" [for]="serviceTypeInter"></kendo-label>
+                            <kendo-textbox #serviceTypeInter [(ngModel)]="currentCoin.serviceTypeInternational"></kendo-textbox>
+                        </div>
+                        <div fxFlex="25" style="padding: 5px;">
+                            <kendo-label class="k-form" text="Shipping Fee">
+                                <kendo-numerictextbox [(value)]="currentCoin.shippingFeeInternational" [autoCorrect]="true"></kendo-numerictextbox>
+                            </kendo-label>
+                        </div>
+                    </div>
+                </div>
+            </kendo-label>
+        </div>
+
+    <div class="byd-coin-field-div">
+        <kendo-label class="k-form" text="Coin Images">
+            <div id="divImages" fxLayout="row" style="padding: 10px; border:1px solid rgba(0, 0, 0, 0.08); border-radius: 5px;">
+                <div fxFlex></div>
+                <div class="byd-image-preview-div">
+                    <span class="material-icons byd-remove-image-icon" (click)="removeImage(0)"
+                        *ngIf="currentCoin.imageUrls[0]!=''">close</span>
+                    <kendo-upload *ngIf="currentCoin.imageUrls[0]==''" [multiple]="true" [saveUrl]="saveUrl"
+                        [autoUpload]="false" (select)="onSelect($event)"></kendo-upload>
+                    <img *ngIf="currentCoin.imageUrls[0]!=''" [src]="currentCoin.imageUrls[0]"
+                        style="min-width:100px; height:100px;">
+                </div>
+                <div class="byd-image-preview-div">
+                    <span class="material-icons byd-remove-image-icon" (click)="removeImage(1)"
+                        *ngIf="currentCoin.imageUrls[1]!=''">close</span>
+                    <kendo-upload *ngIf="currentCoin.imageUrls[1]==''" [multiple]="true" [saveUrl]="saveUrl"
+                        [autoUpload]="false" (select)="onSelect($event)"></kendo-upload>
+                    <img *ngIf="currentCoin.imageUrls[1]!=''" [src]="currentCoin.imageUrls[1]"
+                        style="min-width:100px; height:100px;">
+                </div>
+                <div class="byd-image-preview-div">
+                    <span class="material-icons byd-remove-image-icon" (click)="removeImage(2)"
+                        *ngIf="currentCoin.imageUrls[2]!=''">close</span>
+                    <kendo-upload *ngIf="currentCoin.imageUrls[2]==''" [multiple]="true" [saveUrl]="saveUrl"
+                        [autoUpload]="false" (select)="onSelect($event)"></kendo-upload>
+                    <img *ngIf="currentCoin.imageUrls[2]!=''" [src]="currentCoin.imageUrls[2]"
+                        style="min-width:100px; height:100px;">
+                </div>
+                <div class="byd-image-preview-div">
+                    <span class="material-icons byd-remove-image-icon" (click)="removeImage(3)"
+                        *ngIf="currentCoin.imageUrls[3]!=''">close</span>
+                    <kendo-upload *ngIf="currentCoin.imageUrls[3]==''" [multiple]="true" [saveUrl]="saveUrl"
+                        [autoUpload]="false" (select)="onSelect($event)"></kendo-upload>
+                    <img *ngIf="currentCoin.imageUrls[3]!=''" [src]="currentCoin.imageUrls[3]"
+                        style="min-width:100px; height:100px;">
+                </div>
+                <div class="byd-image-preview-div">
+                    <span class="material-icons byd-remove-image-icon" (click)="removeImage(4)"
+                        *ngIf="currentCoin.imageUrls[4]!=''">close</span>
+                    <kendo-upload *ngIf="currentCoin.imageUrls[4]==''" [multiple]="true" [saveUrl]="saveUrl"
+                        [autoUpload]="false" (select)="onSelect($event)"></kendo-upload>
+                    <img *ngIf="currentCoin.imageUrls[4]!=''" [src]="currentCoin.imageUrls[4]"
+                        style="min-width:100px; height:100px;">
+                </div>
+                <div class="byd-image-preview-div">
+                    <span class="material-icons byd-remove-image-icon" (click)="removeImage(5)"
+                        *ngIf="currentCoin.imageUrls[5]!=''" style="color:white; position: absolute;">close</span>
+                    <kendo-upload *ngIf="currentCoin.imageUrls[5]==''" [multiple]="true" [saveUrl]="saveUrl"
+                        [autoUpload]="false" (select)="onSelect($event)"></kendo-upload>
+                    <img *ngIf="currentCoin.imageUrls[5]!=''" [src]="currentCoin.imageUrls[5]"
+                        style="min-width:100px; height:100px;">
+                </div>
+                <div fxFlex></div>
+            </div>
+        </kendo-label>
+    </div>
+
+    <div class="byd-coin-field-div" style="margin-top: 20px; text-align: center;">
+        <button mat-button (click)="close()" class="btnClose byd-function-button">Cancel</button>&nbsp;&nbsp;&nbsp;
+        <button kendoButton (click)="submit()" class="btnClose byd-function-button">Submit</button>
+    </div>
+</div>

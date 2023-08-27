@@ -1,0 +1,61 @@
+<div fxLayout="row" class="byd-page-container">
+    <div fxFlex="25"></div>
+    <div fxFlex="50" fxLayout="column">
+        <div style="border-bottom: 1px solid #e0e0e0; text-align: center;"><span>Current Available Coins</span></div>
+
+        <div fxLayout="row" class="byd-list-all-div">
+            <div fxFlex="50" fxLayout="row">
+                <span style="white-space: nowrap;">Filter on&nbsp;</span>
+                <kendo-dropdownlist [data]="filter" [(value)]="currentFilter" (valueChange)="filterChange($event)" class="byd-filter-kendo" [textField]="'text'" [valueField]="'value'"></kendo-dropdownlist>
+            </div>
+            <div fxFlex="50" fxLayout="row" style="text-align: right;">
+                <div fxFlex></div>
+                <span style="white-space: nowrap;">Sort by&nbsp;</span>
+                <kendo-dropdownlist [data]="sortBy" [(value)]="currentSortBy" (valueChange)="sortChange($event)" class="byd-sort-kendo" [textField]="'text'" [valueField]="'value'"></kendo-dropdownlist>
+            </div>
+        </div>
+
+        <div fxFlex class="byd-coin-field-div" #divCoinListContainer (scroll)="onScroll()" style="margin-top: 0;">
+
+            <div id="divSpin" style="text-align: center;"><img src="assets/img/Spin-1s-200px.gif" class="byd-spin"></div>
+
+            <ng-container *ngFor="let coin of coins">
+                <div fxLayout="row" class="byd-div-coin-list">
+                    <div (click)="openCoinDetail(coin)" style="width:215px; text-align: center;">
+                        <img [src]="coin.imageUrls[0]" class="byd-coin-image">
+                    </div>
+                    <div fxLayout="column">
+                        <div><img [src]="coin.imageUrls[0]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[1]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[2]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[3]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[4]" class="byd-coin-preview-image"></div>
+                        <div><img [src]="coin.imageUrls[5]" class="byd-coin-preview-image"></div>
+                    </div>
+                    <div fxLayout="column" style="margin-left: 20px">
+                        <!-- <div><span>Coin Id: </span><span><b>{{coin.coinId}}</b></span></div> -->
+                        <div><span>Title: </span><span><b>{{coin.name}}</b></span></div>
+                        <div><span>Current Price: </span><span><b>{{coin.currentPrice | currency}}</b></span></div>
+                        <div><span>Start Price: </span><span><b>{{coin.startPrice | currency}}</b></span></div>
+                        <div><span>Time Between Drops: </span><span><b>{{coin.intervalString}}</b></span></div>
+                        <div><span>Increment: </span><span><b>{{coin.increment | currency}}</b></span></div>
+                        <div><span>Floor Price: </span><span><b>{{coin.lowestPrice | currency}}</b></span></div>
+                    </div>
+                    <div fxFlex style="padding-right: 5px;">
+                        <div><span class="material-icons byd-coin-edit-icon" (click)="modifyCoin(coin)" title="Modify Coin">edit</span></div>
+                        <div><span class="material-icons byd-coin-edit-icon" (click)="removeCoin(coin.coinId)" title="Remove Coin" style="margin-right: 5px;">delete</span></div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <div *ngIf="coins.length==0" style="text-align: center;"><span>Not found any coin.</span></div>
+        </div>
+
+        <div class="byd-coin-field-div" style="border-top: 1px solid #e0e0e0; padding-top: 5px;">
+            <button kendoButton (click)="addNewCoin()" class="byd-function-button">Add New</button>
+        </div>
+
+    </div>
+    <div fxFlex="25"></div>
+
+</div>

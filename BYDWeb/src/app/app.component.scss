@@ -1,0 +1,73 @@
+.material-icons { color:black; }
+#divMainMenu button {
+    // line-height: 50px;
+    color:white;
+    border:0;
+    background-color: transparent;
+}
+
+.byd-logo { width:136px; height:60px; cursor:pointer }
+
+.byd-menu-div {
+    line-height:50px; 
+    margin-left:50px;
+    cursor: pointer;
+}
+
+.searchInput{
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid #d0d0d0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.SearchButton {
+    width:100px;
+}
+
+.byd-search-button {
+  color:white;
+  height:29px;
+  border:0;
+  border-radius: 5px;
+  background-color: #1a405d !important;
+  margin-left: 5px;
+  width:120px;
+}
+.menuButton{
+    background-color: transparent;
+    border: 0;
+    color: white;
+}
+
+.material-icons{
+    vertical-align: middle;
+}
+
+.byd-signin-span {
+    cursor: pointer;
+    color: #1a405d;
+    font-weight: bolder;
+}
+
+::ng-deep .cdk-overlay-pane {
+    margin-left: 30px;
+}
+
+::ng-deep #divNotifications .mat-badge-content{
+    font-size: 10px;
+    height: 15px;
+    width: 15px;
+    line-height: 15px;
+    top: 8px;
+    left: 12px;
+}
+
+.byd-dropdownlist {
+    border-color: #e0e0e0;
+    height: 29px;
+    border-radius: 5px;
+    width: 100px;
+    margin-right: 5px;
+}

@@ -1,0 +1,68 @@
+.mat-mdc-dialog-content {
+    max-height:100%;
+    padding: 0;
+}
+
+::ng-deep #mfdContactSeller .mat-mdc-text-field-wrapper{
+    padding: 0 3px !important;
+}
+
+.byd-margin-top10 {
+    margin-top: 10px;
+}
+
+.byd-function-button {
+    float: right;width: 100%; height: 30px; border-radius: 5px; border:0; background-color: #1a405d; color: white; cursor: pointer;
+}
+
+.btnClose {
+    float: right;width: 100px; height: 30px; border-radius: 5px;
+}
+
+.byd-div-close { 
+    height:40px; border-top: 1px solid #f0f0f0; min-height: 40px;padding: 5px;
+}
+
+.byd-coin-image-preview {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.byd-coin-image {
+    max-height: 300px; text-align: center; height:300px; padding: 0 0 10px;
+}
+
+.byd-margin-10 {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.byd-image-container {
+    padding: 5px;
+    border-right: 1px solid #e0e0e0;
+}
+
+.byd-field-label {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.byd-field-value {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+.byd-field-input {
+    height: 20px;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+.byd-make-offer {
+    padding: 30px 0; line-height: 30px; border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.byd-coin-offer {
+    padding: 30px 0; line-height: 30px; border-bottom: 1px solid rgb(224, 224, 224);
+}

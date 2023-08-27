@@ -1,0 +1,65 @@
+.byd-page-container {
+    height:100%;
+    padding: 20px;
+}
+
+.byd-coin-field-div {
+    margin-top:10px;
+}
+
+.byd-radio {
+    margin-right:5px;
+}
+.byd-radio:checked, .byd-radio.k-checked {
+    border-color: #1a405d;
+    color: white;
+    background-color: #1a405d;
+}
+
+.byd-radio-text {
+    margin-right:20px;
+}
+
+.byd-image-preview-div {
+    min-width:100px;
+    max-width:200px;
+    height:100px;
+    border: 1px dashed #a0a0a0;
+    margin-right: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.byd-add-image-icon { line-height: 100px; font-size: 30px;}
+.byd-remove-image-icon {
+    color: white;
+    position: absolute;
+    font-size: 15px;
+    border-radius: 10px;
+    background-color: #a0a0a0;
+}
+
+::ng-deep #divImages kendo-upload { border:0; }
+::ng-deep #divImages kendo-upload-action-buttons { display:none; }
+::ng-deep #divImages kendo-upload .k-upload-button-wrap {width: 100%; text-align: center; margin-top: 22px;}
+::ng-deep #divImages .k-upload-files { display:none; }
+::ng-deep #divImages .k-dropzone-hint { display:none; }
+::ng-deep #divImages .k-dropzone { background-color: transparent;}
+::ng-deep #divImages .k-upload-button-wrap button { min-width: auto; border: 0;  background-color: transparent; background-image: none; }
+
+.byd-div-radio {
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.byd-function-button {
+    width:200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px;
+    color:white;
+    background-color: #1a405d;
+}

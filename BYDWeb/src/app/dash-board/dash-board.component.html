@@ -1,0 +1,52 @@
+<div fxLayout="column" class="byd-page-container">
+  <!-- carousel row -->
+  <div fxFlex="55" role="main" style="padding:20px 150px 0;">
+    <owl-carousel-o [options]="carouselOptions">
+      <ng-container *ngFor="let slide of news">
+        <ng-template carouselSlide [id]="slide.id">
+          <div style="padding:0 20px;cursor:pointer" (click)="gotoRouter('CoinList')"><img [src]="slide.imageUrl" [alt]="slide.caption" [title]="slide.newsDescription" class="carousel-coin"></div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+
+  <!-- refer coin row -->
+  <div fxFlex fxLayout="row" role="main" style="border-top:1px solid #f0f0f0; border-bottom:1px solid #f0f0f0;">
+    <div fxFlex></div>
+    <div fxFlex="55">
+      <div *ngFor="let coin of coins" class="refer-coin-contain" fxFlex="33" fxLayout="column">
+        <div fxLayout="row">
+          <div fxFlex="50" style="text-align: left; padding: 5px;">
+            <span class="refer-coin-price-down">{{coin.startPrice | currency}}</span>
+          </div>
+          <div fxFlex style="text-align: right; padding: 5px;">
+            <span class="material-icons refer-coin-price-down-icon">south</span>
+            <span id="spanCurrentPrice{{coin.coinId}}" class="refer-coin-price-down" style="padding-left:18px;">{{coin.increment | currency }}</span>
+          </div>
+        </div>
+
+        <div (click)="openCoinDetail(coin.coinId)"><img class="refer-coin" [src]="coin.imageUrls[0]" /></div>
+        <div (click)="openCoinDetail(coin.coinId)" style="padding: 10px;"><span class="refer-coin-title">{{coin.name}}</span></div>
+        
+        <div fxFlex style="text-align: center;padding-bottom: 10px;" fxLayout="column">
+          <div fxFlex></div>
+          <div style="font-size: 20px; color:white; background-color: #1a405d; padding: 5px;"><span>Current Price: {{coin.currentPrice | currency}}</span></div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex>
+            <span *ngIf="!coin.coinInWatchList" (click)="addCoinToWatchlist(coin.coinId)" title="Add to Watch List" class="material-icons refer-coin-icon">favorite_border</span>
+            <span *ngIf="coin.coinInWatchList" (click)="removeCoinFromWatchlist(coin.coinId)" title="Remove from Watch List" class="material-icons refer-coin-icon" style="color:mediumseagreen">favorite</span>
+          </div>
+          <div fxFlex="50">
+            <span class="material-icons refer-coin-icon" title="Buy Now">add_shopping_cart</span>
+          </div>
+        </div>
+
+        <div style="text-align: center; padding: 10px 10px 0; font-size: 12px;">
+          <span id="spanPrice_coin1" class="refer-coin-end-datetime">Time Until Next Drop: {{coin.leftTime}}</span>
+        </div>
+      </div>
+    </div>
+    <div fxFlex></div>
+  </div>
+</div>

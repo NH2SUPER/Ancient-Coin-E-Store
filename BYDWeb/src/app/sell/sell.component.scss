@@ -1,0 +1,27 @@
+.byd-page-container {
+    height:100%;
+    padding: 20px;
+}
+
+.byd-sale-summary-div {
+    background-color: #e0e0e0; 
+    color:black; 
+    text-align: center;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.byd-sale-summary-total {
+    color: #1a405d; 
+    font-weight: 500;
+    font-size: 58px;
+}
+
+.byd-sale-summary-list {
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+}

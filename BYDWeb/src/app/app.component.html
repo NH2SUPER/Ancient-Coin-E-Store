@@ -1,0 +1,117 @@
+<div style="width:100%; height:100%" fxLayout="column">
+  <!-- Header1 -->
+  <div style="width:100%; padding-left:10px; padding-right:10px; height:50px;" fxLayout="row">
+    <!-- Menu [Hi Bidder] -->
+    <div *ngIf="userSignedIn" id="divUser" name="divLoginUserContent" style="line-height:50px">
+      <span>Hi, </span>
+      <button *ngIf="currentUser" [matMenuTriggerFor]="menu_onlineshop" class="menuButton" style="padding-left: 0;">
+        <span class="byd-signin-span">{{currentUser.firstName}} {{currentUser.lastName}}</span><span
+          class="material-icons" style="cursor: pointer;">expand_more</span>
+      </button>
+      <mat-menu #menu_onlineshop="matMenu">
+        <button mat-menu-item><span>Profile</span></button>
+        <button mat-menu-item (click)="logout()"><span>Logout</span></button>
+      </mat-menu>
+    </div>
+    <div *ngIf="!userSignedIn" id="divSignInRegister" style="line-height:50px;">
+      <span class="byd-signin-span" (click)="login()"><b>Sign In</b></span> or
+      <span class="byd-signin-span" (click)="register()"><b>Register</b></span>
+    </div>
+
+    <!-- Menu [byd deals] -->
+    <div class="byd-menu-div" (click)="gotoRouter('CoinList')"><span>All Listings</span></div>
+
+    <!-- Menu [contact us] -->
+    <div class="byd-menu-div"><span>About Us</span></div>
+
+    <!-- Main Menu -->
+    <div fxFlex fxlayout="row" style="text-align:center;"></div>
+
+
+    <!-- Menu [Sell] -->
+    <div *ngIf="userSignedIn" (click)="gotoRouter('Sell')" class="byd-menu-div"
+      style="line-height:50px; margin-right: 40px;" name="divLoginUserContent">
+      <span>Sell</span>
+    </div>
+
+    <!-- Menu [My Watchlist] -->
+    <div (click)="gotoRouter('WatchList')" class="byd-menu-div"
+      style="line-height:50px; margin-right: 40px; margin-left:0" name="divLoginUserContent">
+      <span>Watchlist</span>
+    </div>
+
+    <!-- Menu [My BYD] -->
+    <div *ngIf="userSignedIn" style="line-height:50px; margin-right: 30px;" name="divLoginUserContent">
+      <button mat-icon-button [matMenuTriggerFor]="menu_onlineshop" class="menuButton"
+        style="padding-left: 0; position:relative;cursor: pointer;">
+        <span style="color:black">My BYDD</span><span class="material-icons"
+          style="top: -2px; position: relative;">expand_more</span>
+      </button>
+      <mat-menu #menu_onlineshop="matMenu">
+        <button mat-menu-item (click)="gotoRouter('UserProfile')">
+          <mat-icon>person</mat-icon>
+          <span>My Profile</span>
+        </button>
+        <button mat-menu-item (click)="gotoRouter('UserOrder')">
+          <mat-icon>gavel</mat-icon>
+          <span>My Orders</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>payment</mat-icon>
+          <span>My Invoices</span>
+        </button>
+      </mat-menu>
+
+    </div>
+
+    <!-- Menu [Notify] -->
+    <div id="divNotifications" (click)="gotoRouter('MyOffer')" style="margin-right:25px; cursor: pointer;">
+      <span *ngIf="(currentUser && currentUser.coinOffer && currentUser.coinOffer.length==0) || !userSignedIn"
+        class="material-icons" style="line-height:50px;">notifications_none</span>
+      <span *ngIf="currentUser && currentUser.coinOffer && currentUser.coinOffer.length>0" class="material-icons"
+        matBadge="{{currentUser && currentUser.coinOffer && currentUser.coinOffer.length}}" matBadgeColor="warn"
+        style="line-height:50px;">notifications_none</span>
+    </div>
+
+    <div style="margin-right:25px"><span class="material-icons" style="line-height:50px;">shopping_cart</span></div>
+
+  </div>
+
+  <!-- Header2 -->
+  <div style="width:100%; padding-left:10px; padding-right:10px; height:50px;" fxLayout="row">
+    <!-- Logo -->
+    <div><img src="assets/img/Logo3.png" (click)="gotoHome()" class="byd-logo"></div>
+
+    <!-- Search Bar -->
+    <div id="divMainSearchBox" fxFlex fxlayout="row" style="text-align:center;">
+      <div fxFlex></div>
+      <div fxFlex="50" fxLayout="row" style="line-height: 50px;">
+        <div fxFlex="80" fxLayout="row">
+          <select id="category-select" class="byd-dropdownlist" [(ngModel)]="selectedCategoryId">
+            <option value=0>Category</option>
+            <option value=1>&nbsp;&nbsp;Gold Coin</option>
+            <option value=2>&nbsp;&nbsp;Silver Coin</option>
+            <option value=3>&nbsp;&nbsp;Copper/Brass Coin&nbsp;&nbsp;</option>
+            <option value=4>&nbsp;&nbsp;Medal</option>
+            <option value=5>&nbsp;&nbsp;Banknote</option>
+            <option value=20>&nbsp;&nbsp;Other</option>
+          </select>
+          <input matInput class="searchInput" placeholder="Search BYD Coins" [(ngModel)]="searchKeyword" (keyup.enter)="searchCoins()">
+        </div>
+        <div style="line-height: normal;">
+          <button mat-button class="byd-search-button" (click)="searchCoins()"><span>Search</span></button>
+        </div>
+      </div>
+      <div fxFlex></div>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <router-outlet></router-outlet>
+  </div>
+
+  <div style="text-align: center; font-size: 12px;">
+    <span>Copyright © 2023 BYD Inc. All Rights Reserved. User Agreement, Privacy, Payments Terms of Use, Cookies and
+      AdChoice</span>
+  </div>
+</div>

@@ -1,0 +1,130 @@
+<div style="height:100%" fxLayout="column">
+    <div style="height:40px; border-bottom:1px solid #a0a0a0;text-align: center;">
+        <span style="line-height:40px; font-size:20px">{{currentCoin.name}}</span>
+        <span class="material-icons" (click)="onYesClick()" style="float: right;line-height: 40px;margin-right: 10px;cursor: pointer;">close</span>
+    </div>
+    <div id="divZoomIn" style="height:100%;text-align: center; padding: 20px; display:none">
+        <img (click)="imageZoomOut()" [src]="currentCoinImage" class="byd-coin-image-preview" style="height:100%; cursor: pointer;">
+    </div>
+    <div id="divZoomOut" fxFlex mat-dialog-content fxLayout="row" style="max-height:100%;">
+        <div fxFlex="80" style="border-right:1px solid #a0a0a0" fxLayout="row">
+            <div fxFlex="55" fxLayout="column">
+                <div fxFlex style="border-left:1px solid #c0c0c0;border-right:1px solid #c0c0c0; max-height:340px" fxLayout="column">
+                    <div style="text-align: right;">
+                        <span *ngIf="!coinInWatchList" (click)="addCoinToWatchlist()" class="material-icons" style="cursor: pointer;">favorite_border</span>
+                        <span *ngIf="coinInWatchList" (click)="removeCoinFromWatchlist()" class="material-icons" style="cursor: pointer; color:mediumseagreen">favorite</span>
+                    </div>
+                    <div fxFlex class="byd-coin-image"><img (click)="imageZoomIn()" [src]="currentCoinImage" class="byd-coin-image-preview" style="cursor: pointer;"></div>
+                </div>
+                <div fxLayout="row" style="border:1px solid #c0c0c0; height: 100px;">
+                    <div fxFlex="17" (click)="showImage(0)" fxLayout="column" class="byd-image-container"><span fxFlex>&nbsp;</span><img [src]="currentCoin.imageUrls[0]" class="byd-coin-image-preview"><span fxFlex>&nbsp;</span></div>
+                    <div fxFlex="17" (click)="showImage(1)" fxLayout="column" class="byd-image-container"><span fxFlex></span><img [src]="currentCoin.imageUrls[1]" class="byd-coin-image-preview"><span fxFlex></span></div>
+                    <div fxFlex="17" (click)="showImage(2)" fxLayout="column" class="byd-image-container"><span fxFlex></span><img [src]="currentCoin.imageUrls[2]" class="byd-coin-image-preview"><span fxFlex></span></div>
+                    <div fxFlex="16" (click)="showImage(3)" fxLayout="column" class="byd-image-container"><span fxFlex></span><img [src]="currentCoin.imageUrls[3]" class="byd-coin-image-preview"><span fxFlex></span></div>
+                    <div fxFlex="16" (click)="showImage(4)" fxLayout="column" class="byd-image-container"><span fxFlex></span><img [src]="currentCoin.imageUrls[4]" class="byd-coin-image-preview"><span fxFlex></span></div>
+                    <div fxFlex="16" (click)="showImage(5)" fxLayout="column" class="byd-image-container"><span fxFlex></span><img [src]="currentCoin.imageUrls[5]" class="byd-coin-image-preview"><span fxFlex></span></div>
+                </div>
+                <div style="height:50px; border-right:1px solid #c0c0c0; padding: 0 10px; font-size: 12px;">
+                    <span>{{currentCoin.description}}</span>
+                </div>
+            </div>
+            <div fxFlex fxLayout="column">
+                <div fxLayout="row" class="byd-margin-top10">
+                    <div fxFlex="50" fxLayout="column" style="padding: 0 5px;">
+                        <span class="byd-field-label">Original Price</span>
+                        <span class="byd-field-value">{{currentCoin.startPrice | currency}}</span>
+                    </div>
+                    <div fxFlex="50" fxLayout="column" style="padding: 0 5px;">
+                        <span class="byd-field-label">Current Price</span>
+                        <span class="byd-field-value">{{currentCoin.currentPrice | currency}}</span>
+                    </div>
+                </div>
+                <div fxLayout="row" class="byd-margin-top10">
+                    <div fxFlex="50" fxLayout="column" style="padding: 0 5px;">
+                        <span class="byd-field-label">Decreasing Increment</span>
+                        <span class="byd-field-value">${{currentCoin.increment}}</span>
+                    </div>
+                    <div fxFlex="50" fxLayout="column" style="padding: 0 5px;">
+                        <span class="byd-field-label">Time till Next Drop</span>
+                        <span class="byd-field-value">{{currentCoin.leftTime}}</span>
+                    </div>
+                </div>
+                <div fxLayout="row" class="byd-margin-top10">
+                    <div fxFlex="50" fxLayout="column" style="padding: 0 5px;">
+                        <span class="byd-field-label">Floor Price</span>
+                        <span class="byd-field-value">{{currentCoin.lowestPrice | currency}}</span>
+                    </div>
+                    <div fxFlex="50" fxLayout="column" style="padding: 0 5px;">
+                        <span class="byd-field-label">End Date</span>
+                        <span class="byd-field-value">{{currentCoin.endDateTime | dateFormat}}</span>
+                    </div>
+                </div>
+                <div  class="byd-margin-top10" style="padding: 10px 5px; border-bottom: 1px solid #e0e0e0;">
+                    <div fxFlex></div>
+                    <div fxFlex="50">
+                        <button class="byd-function-button">Buy Now</button><br><br>
+                        <button *ngIf="!coinInWatchList" (click)="addCoinToWatchlist()" class="byd-function-button" style="background-color: #3498ca;">Add to watchlist</button>
+                        <button *ngIf="coinInWatchList" (click)="removeCoinFromWatchlist()" class="byd-function-button" style="background-color:mediumseagreen;">Remove from watchlist</button>
+                    </div>
+                </div>
+
+                <!-- make offer -->
+                <div id="divMakeOffer" *ngIf="!currentCoin.hasOffer" fxLayout="row" class="byd-make-offer">
+                    <div fxFlex="50" fxLayout="row" style="padding: 0 5px;">
+                        <div fxFlex="55" style="text-align: right;"><span style="color: #1a405d; font-weight: 500;">Make Offer <b>$</b></span></div>
+                        <div fxFlex>
+                            <kendo-numerictextbox [(value)]="currentCoinOfferPrice" [autoCorrect]="true" class="byd-field-input" style="width:90%"></kendo-numerictextbox>
+                        </div>
+                    </div>
+                    <div fxFlex="50" style="padding: 0 5px;">
+                        <div><button [disabled]="!userSignedIn" (click)="sendOffer()" class="byd-function-button" kendoButton>Send Offer</button></div>
+                    </div>
+                </div>
+                <div id="divCoinOffer" *ngIf="currentCoin.hasOffer" fxLayout="row" class="byd-coin-offer">
+                    <div fxFlex="50" style="padding: 0 5px; text-align: center;">
+                        <span style="color: #1a405d; font-weight: 500;">Your offer price : ${{currentCoin.offerPrice | currency}}</span>
+                    </div>
+                    <div fxFlex style="padding: 0 5px;">
+                        <div><button class="byd-function-button" kendoButton style="background-color:mediumseagreen;">Retract Offer</button></div>
+                    </div>
+                </div>
+
+                <!-- notice me -->
+                <div fxLayout="row" style="padding: 30px 0; line-height: 30px;">
+                    <div fxFlex="50" fxLayout="row" style="padding: 0 5px;">
+                        <div fxFlex="55" style="text-align: right;"><span style="color: #1a405d; font-weight: 500;">Notify me at <b>$</b></span></div>
+                        <div fxFlex>
+                            <kendo-numerictextbox [(value)]="currentCoinNoticePrice" [autoCorrect]="true" class="byd-field-input" style="width:90%"></kendo-numerictextbox>
+                        </div>
+                    </div>
+                    <div fxFlex="50" style="padding: 0 5px;">
+                        <div><button [disabled]="!userSignedIn" class="byd-function-button" kendoButton>Notify me </button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div  fxFlex fxLayout="column" style="padding: 5px;">
+            <div>
+                <div><span class="byd-field-label">Seller Information</span></div>
+                <div style="border:1px solid #f0f0f0">
+                    <div><span>Apex Numimatics Inc</span></div>
+                    <div><span style="cursor: pointer;" (click)="gotoCompanyCoinList()">Seller's Other Items</span></div>
+                </div>
+            </div>
+            <div style="margin-top:20px">
+                <span>Contact Seller</span>
+                <div>
+                    <mat-form-field id="mfdContactSeller" class="example-full-width" style="width:100%">
+                       <mat-label>Write your message</mat-label>
+                       <textarea matInput></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div><button mat-button (click)="onYesClick()" class="byd-function-button">Send Message</button></div>
+        </div>
+    </div>
+    <div mat-dialog-actions class="byd-div-close" fxLayout="row">
+      <div fxFlex></div>
+      <button mat-button (click)="onYesClick()" class="btnClose">Close</button>
+    </div>
+</div>
